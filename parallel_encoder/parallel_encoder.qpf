@@ -19,13 +19,13 @@
 #
 # Quartus Prime
 # Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-# Date created = 14:48:22  November 30, 2021
+# Date created = 16:20:03  November 30, 2021
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "20.1"
-DATE = "14:48:22  November 30, 2021"
+DATE = "16:20:03  November 30, 2021"
 
 # Revisions
 
-PROJECT_REVISION = "hamming_codes"
+PROJECT_REVISION = "parallel_encoder"

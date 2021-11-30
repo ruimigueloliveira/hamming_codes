@@ -1,14 +1,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
-ENTITY CombinatorialEncoder IS
+ENTITY parallel_encoder IS
     PORT (
         m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11: in std_logic;
         x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15: out std_logic
     );
-END CombinatorialEncoder;
+END parallel_encoder;
 
-ARCHITECTURE behave OF CombinatorialEncoder IS
+ARCHITECTURE behave OF parallel_encoder IS
 BEGIN
 	x1 <= m1;
 	x2 <= m2;
