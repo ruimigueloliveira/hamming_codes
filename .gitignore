@@ -30,6 +30,8 @@
 *_generation_script*
 *_inst.vhd
 *.bak
+*.qpf
+*.qsf
 *.cmp
 *.done
 *.eqn
