@@ -1,0 +1,18 @@
+Analysis & Synthesis Status : Successful - Tue Nov 30 15:44:52 2021
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Revision Name : hamming_codes
+Top-level Entity Name : CombinatorialEncoder
+Family : Cyclone IV GX
+Total logic elements : 6
+    Total combinational functions : 6
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 26
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 0

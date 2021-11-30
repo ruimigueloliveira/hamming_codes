@@ -1,0 +1,101 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/simulation/qsim
+Ecombinatorialencoder
+Z1 w1638287220
+Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z3 DPx9 cycloneiv 19 cycloneiv_atom_pack 0 22 ^M[R>L941CzW^5^z4gfb52
+Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z7 DPx9 cycloneiv 20 cycloneiv_components 0 22 A=5Z=j^V:4BYGPNKNFE9o0
+!i122 8
+Z8 dC:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/CombinatorialEncoder/simulation/qsim
+Z9 8hamming_codes.vho
+Z10 Fhamming_codes.vho
+l0
+L35 1
+VkVoLQ>cXQHWfnQ:;c`aRX2
+!s100 92Rd`nK8M>08273i9oYEm3
+Z11 OV;C;2020.1;71
+32
+Z12 !s110 1638287222
+!i10b 1
+Z13 !s108 1638287222.000000
+Z14 !s90 -work|work|hamming_codes.vho|
+Z15 !s107 hamming_codes.vho|
+!i113 1
+Z16 o-work work
+Z17 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+DEx4 work 20 combinatorialencoder 0 22 kVoLQ>cXQHWfnQ:;c`aRX2
+!i122 8
+l135
+L66 502
+VLzjU5_[G8MEh2RCCoG`@^3
+!s100 6n6TCWBWIN@KA02R53BWz3
+R11
+32
+R12
+!i10b 1
+R13
+R14
+R15
+!i113 1
+R16
+R17
+Ecombinatorialencoder_vhd_vec_tst
+Z18 w1638287219
+R5
+R6
+!i122 9
+R8
+Z19 8Waveform.vwf.vht
+Z20 FWaveform.vwf.vht
+l0
+L32 1
+V6NN@ncZcXZGaHE`4jZhML3
+!s100 VDR[`Z1LZ]R4B4[Q`KR@Q0
+R11
+32
+R12
+!i10b 1
+R13
+Z21 !s90 -work|work|Waveform.vwf.vht|
+Z22 !s107 Waveform.vwf.vht|
+!i113 1
+R16
+R17
+Acombinatorialencoder_arch
+R5
+R6
+Z23 DEx4 work 32 combinatorialencoder_vhd_vec_tst 0 22 6NN@ncZcXZGaHE`4jZhML3
+!i122 9
+l93
+Z24 L34 212
+VnH]NzlYM9=@VAcIFOJhLb1
+!s100 Tz<IHN<7=c4TZIT9PfomU3
+R11
+32
+R12
+!i10b 1
+R13
+R21
+R22
+!i113 1
+R16
+R17
