@@ -1,31 +1,32 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.all;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY parallel_decoder IS
-  PORT( co_msg : IN STD_LOGIC_VECTOR(14 downto 0);
-		  deco_msg: OUT STD_LOGIC_VECTOR(10 downto 0));
-END parallel_decoder;
+ENTITY PARALLEL_DECODER IS
+  PORT( CODED_MESSAGE : IN  STD_LOGIC_VECTOR(14 DOWNTO 0);
+		  MESSAGE : OUT STD_LOGIC_VECTOR(10 DOWNTO 0));
+END PARALLEL_DECODER;
 
-ARCHITECTURE structural OF parallel_decoder IS
+ARCHITECTURE STRUCTURAL OF PARALLEL_DECODER IS
 
-SIGNAL s_pcheck : STD_LOGIC_VECTOR(3 downto 0);
-SIGNAL s_mask : STD_LOGIC_VECTOR(10 downto 0);
+SIGNAL S_PARITY_BITS : STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL S_MASK : STD_LOGIC_VECTOR(10 DOWNTO 0);
 
 BEGIN
 
-	hmt: work.HxMt PORT MAP(co_msg, s_pcheck);
-	dec: work.custdecod4to11 PORT MAP (s_pcheck, s_mask);
+	PARITY_BITS: WORK.PARITY_BITS_CALCULATOR PORT MAP(CODED_MESSAGE, S_PARITY_BITS);
+	MASK: WORK.DECODER_4TO11 PORT MAP(S_PARITY_BITS, S_MASK);
 	
-	xor0: work.a_xor_b PORT MAP(co_msg(0 ),s_mask(0 ),deco_msg(0 ));
-	xor1: work.a_xor_b PORT MAP(co_msg(1 ),s_mask(1 ),deco_msg(1 ));
-	xor2: work.a_xor_b PORT MAP(co_msg(2 ),s_mask(2 ),deco_msg(2 ));
-	xor3: work.a_xor_b PORT MAP(co_msg(3 ),s_mask(3 ),deco_msg(3 ));
-	xor4: work.a_xor_b PORT MAP(co_msg(4 ),s_mask(4 ),deco_msg(4 ));
-	xor5: work.a_xor_b PORT MAP(co_msg(5 ),s_mask(5 ),deco_msg(5 ));
-	xor6: work.a_xor_b PORT MAP(co_msg(6 ),s_mask(6 ),deco_msg(6 ));
-	xor7: work.a_xor_b PORT MAP(co_msg(7 ),s_mask(7 ),deco_msg(7 ));
-	xor8: work.a_xor_b PORT MAP(co_msg(8 ),s_mask(8 ),deco_msg(8 ));
-	xor9: work.a_xor_b PORT MAP(co_msg(9 ),s_mask(9 ),deco_msg(9 ));
-	xor10:work.a_xor_b PORT MAP(co_msg(10),s_mask(10),deco_msg(10));
+	-- BIT CORRECTION
+	MESSAGE(0) <= CODED_MESSAGE(0) XOR S_MASK(0);
+	MESSAGE(1) <= CODED_MESSAGE(1) XOR S_MASK(1);
+	MESSAGE(2) <= CODED_MESSAGE(2) XOR S_MASK(2);
+	MESSAGE(3) <= CODED_MESSAGE(3) XOR S_MASK(3);
+	MESSAGE(4) <= CODED_MESSAGE(4) XOR S_MASK(4);
+	MESSAGE(5) <= CODED_MESSAGE(5) XOR S_MASK(5);
+	MESSAGE(6) <= CODED_MESSAGE(6) XOR S_MASK(6);
+	MESSAGE(7) <= CODED_MESSAGE(7) XOR S_MASK(7);
+	MESSAGE(8) <= CODED_MESSAGE(8) XOR S_MASK(8);
+	MESSAGE(9) <= CODED_MESSAGE(9) XOR S_MASK(9);
+	MESSAGE(10) <= CODED_MESSAGE(10) XOR S_MASK(10);
 	
-END structural;
+END STRUCTURAL;
