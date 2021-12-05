@@ -1,14 +1,14 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off seq_encoder -c seq_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform1.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform1.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off seq_encoder -c seq_encoder --vector_source="C:/Users/ruimi/Downloads/assignment1/hamming_codes/seq_encoder/Waveform1.vwf" --testbench_file="C:/Users/ruimi/Downloads/assignment1/hamming_codes/seq_encoder/simulation/qsim/Waveform1.vwf.vht"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" seq_encoder -c seq_encoder</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Downloads/assignment1/hamming_codes/seq_encoder/simulation/qsim/" seq_encoder -c seq_encoder</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform.vwf.vht"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform.vwf.vht"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" bit_serial_encoder -c bit_serial_encoder</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" bit_serial_encoder -c bit_serial_encoder</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
-vcom -work work seq_encoder.vho
-vcom -work work Waveform1.vwf.vht
-vsim  -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.seq_encoder_vhd_vec_tst
-vcd file -direction seq_encoder.msim.vcd
+vcom -work work bit_serial_encoder.vho
+vcom -work work Waveform.vwf.vht
+vsim  -c -t 1ps -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.seq_encoder_vhd_vec_tst
+vcd file -direction bit_serial_encoder.msim.vcd
 vcd add -internal seq_encoder_vhd_vec_tst/*
 vcd add -internal seq_encoder_vhd_vec_tst/i1/*
 proc simTimestamp {} {
@@ -20,18 +20,14 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
-
-
 
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
-vcom -work work seq_encoder.vho
-vcom -work work Waveform1.vwf.vht
-vsim -novopt -c -t 1ps -sdfmax seq_encoder_vhd_vec_tst/i1=seq_encoder_vhd.sdo -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.seq_encoder_vhd_vec_tst
-vcd file -direction seq_encoder.msim.vcd
+vcom -work work bit_serial_encoder.vho
+vcom -work work Waveform.vwf.vht
+vsim -novopt -c -t 1ps -sdfmax seq_encoder_vhd_vec_tst/i1=bit_serial_encoder_vhd.sdo -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.seq_encoder_vhd_vec_tst
+vcd file -direction bit_serial_encoder.msim.vcd
 vcd add -internal seq_encoder_vhd_vec_tst/*
 vcd add -internal seq_encoder_vhd_vec_tst/i1/*
 proc simTimestamp {} {
@@ -43,10 +39,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
-
-
 
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
@@ -86,7 +78,7 @@ HEADER
 	GRID_DUTY_CYCLE = 50;
 }
 
-SIGNAL("clk")
+SIGNAL("CLK")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -96,7 +88,7 @@ SIGNAL("clk")
 	PARENT = "";
 }
 
-SIGNAL("enc_msg")
+SIGNAL("ENC_MSG")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -106,7 +98,7 @@ SIGNAL("enc_msg")
 	PARENT = "";
 }
 
-SIGNAL("msg")
+SIGNAL("MSG")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -116,7 +108,7 @@ SIGNAL("msg")
 	PARENT = "";
 }
 
-SIGNAL("nrst")
+SIGNAL("NRST")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -126,28 +118,22 @@ SIGNAL("nrst")
 	PARENT = "";
 }
 
-TRANSITION_LIST("clk")
+TRANSITION_LIST("CLK")
 {
 	NODE
 	{
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 10;
-			LEVEL 0 FOR 10.0;
-			LEVEL 1 FOR 10.0;
+			REPEAT = 31;
+			LEVEL 0 FOR 5.0;
+			LEVEL 1 FOR 5.0;
 		}
-		NODE
-		{
-			REPEAT = 14;
-			LEVEL 0 FOR 10.0;
-			LEVEL 1 FOR 10.0;
-		}
-		LEVEL 0 FOR 520.0;
+		LEVEL 0 FOR 690.0;
 	}
 }
 
-TRANSITION_LIST("enc_msg")
+TRANSITION_LIST("ENC_MSG")
 {
 	NODE
 	{
@@ -156,39 +142,37 @@ TRANSITION_LIST("enc_msg")
 	}
 }
 
-TRANSITION_LIST("msg")
+TRANSITION_LIST("MSG")
 {
 	NODE
 	{
 		REPEAT = 1;
 		LEVEL 1 FOR 10.0;
-		LEVEL 0 FOR 20.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 20.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 20.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 20.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 20.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 790.0;
+		LEVEL 0 FOR 10.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 10.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 10.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 10.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 910.0;
 	}
 }
 
-TRANSITION_LIST("nrst")
+TRANSITION_LIST("NRST")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 420.0;
-		LEVEL 0 FOR 580.0;
+		LEVEL 1 FOR 270.0;
+		LEVEL 0 FOR 730.0;
 	}
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "clk";
+	CHANNEL = "CLK";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 0;
@@ -197,7 +181,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "nrst";
+	CHANNEL = "NRST";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 1;
@@ -206,7 +190,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "msg";
+	CHANNEL = "MSG";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
@@ -215,7 +199,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "enc_msg";
+	CHANNEL = "ENC_MSG";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
