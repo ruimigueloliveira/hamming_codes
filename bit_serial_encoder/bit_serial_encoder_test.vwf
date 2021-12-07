@@ -1,16 +1,16 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform.vwf.vht"</ttestbench_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/bit_serial_encoder_test.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/bit_serial_encoder_test.vwf.vht"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform1.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform1.vwf.vht"</ttestbench_cmd>
 <fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" bit_serial_encoder -c bit_serial_encoder</fnetlist_cmd>
 <tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" bit_serial_encoder -c bit_serial_encoder</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vcom -work work bit_serial_encoder.vho
-vcom -work work Waveform.vwf.vht
-vsim  -c -t 1ps -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.seq_encoder_vhd_vec_tst
+vcom -work work bit_serial_encoder_test.vwf.vht
+vsim  -c -t 1ps -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.bit_serial_encoder_vhd_vec_tst
 vcd file -direction bit_serial_encoder.msim.vcd
-vcd add -internal seq_encoder_vhd_vec_tst/*
-vcd add -internal seq_encoder_vhd_vec_tst/i1/*
+vcd add -internal bit_serial_encoder_vhd_vec_tst/*
+vcd add -internal bit_serial_encoder_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -20,16 +20,15 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
 vcom -work work bit_serial_encoder.vho
-vcom -work work Waveform.vwf.vht
-vsim -novopt -c -t 1ps -sdfmax seq_encoder_vhd_vec_tst/i1=bit_serial_encoder_vhd.sdo -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.seq_encoder_vhd_vec_tst
+vcom -work work Waveform1.vwf.vht
+vsim -novopt -c -t 1ps -sdfmax bit_serial_encoder_vhd_vec_tst/i1=bit_serial_encoder_vhd.sdo -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.bit_serial_encoder_vhd_vec_tst
 vcd file -direction bit_serial_encoder.msim.vcd
-vcd add -internal seq_encoder_vhd_vec_tst/*
-vcd add -internal seq_encoder_vhd_vec_tst/i1/*
+vcd add -internal bit_serial_encoder_vhd_vec_tst/*
+vcd add -internal bit_serial_encoder_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -39,7 +38,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
 </simulation_settings>*/
@@ -88,13 +86,13 @@ SIGNAL("CLK")
 	PARENT = "";
 }
 
-SIGNAL("ENC_MSG")
+SIGNAL("NRST")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
+	DIRECTION = INPUT;
 	PARENT = "";
 }
 
@@ -108,13 +106,13 @@ SIGNAL("MSG")
 	PARENT = "";
 }
 
-SIGNAL("NRST")
+SIGNAL("ENC_MSG")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = INPUT;
+	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
@@ -125,20 +123,21 @@ TRANSITION_LIST("CLK")
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 31;
+			REPEAT = 38;
 			LEVEL 0 FOR 5.0;
 			LEVEL 1 FOR 5.0;
 		}
-		LEVEL 0 FOR 690.0;
+		LEVEL 0 FOR 620.0;
 	}
 }
 
-TRANSITION_LIST("ENC_MSG")
+TRANSITION_LIST("NRST")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL 1 FOR 180.0;
+		LEVEL 0 FOR 820.0;
 	}
 }
 
@@ -160,13 +159,12 @@ TRANSITION_LIST("MSG")
 	}
 }
 
-TRANSITION_LIST("NRST")
+TRANSITION_LIST("ENC_MSG")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 270.0;
-		LEVEL 0 FOR 730.0;
+		LEVEL X FOR 1000.0;
 	}
 }
 
