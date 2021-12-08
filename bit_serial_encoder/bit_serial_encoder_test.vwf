@@ -1,12 +1,12 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform.vwf.vht"</ftestbench_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/bit_serial_encoder_test.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/bit_serial_encoder_test.vwf.vht"</ftestbench_cmd>
 <ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off bit_serial_encoder -c bit_serial_encoder --vector_source="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/Waveform.vwf" --testbench_file="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/Waveform.vwf.vht"</ttestbench_cmd>
 <fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" bit_serial_encoder -c bit_serial_encoder</fnetlist_cmd>
 <tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/ruimi/Ambiente de Trabalho/uni/aad/assignment1/hamming_codes/bit_serial_encoder/simulation/qsim/" bit_serial_encoder -c bit_serial_encoder</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vcom -work work bit_serial_encoder.vho
-vcom -work work Waveform.vwf.vht
+vcom -work work bit_serial_encoder_test.vwf.vht
 vsim  -c -t 1ps -L cycloneiv -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.bit_serial_encoder_vhd_vec_tst
 vcd file -direction bit_serial_encoder.msim.vcd
 vcd add -internal bit_serial_encoder_vhd_vec_tst/*
@@ -20,6 +20,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 
 
 
@@ -43,6 +44,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 
 
 
