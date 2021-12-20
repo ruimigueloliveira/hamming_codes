@@ -29,6 +29,8 @@ quit -f
 
 
 
+
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -47,6 +49,8 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
 
 
 
@@ -87,7 +91,7 @@ HEADER
 	VERSION = 1;
 	TIME_UNIT = ns;
 	DATA_OFFSET = 0.0;
-	DATA_DURATION = 1000.0;
+	DATA_DURATION = 600.0;
 	SIMULATION_TIME = 0.0;
 	GRID_PHASE = 0.0;
 	GRID_PERIOD = 10.0;
@@ -141,11 +145,10 @@ TRANSITION_LIST("CLK")
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 33;
+			REPEAT = 20;
 			LEVEL 0 FOR 15.0;
 			LEVEL 1 FOR 15.0;
 		}
-		LEVEL 0 FOR 10.0;
 	}
 }
 
@@ -154,7 +157,8 @@ TRANSITION_LIST("ENC_MSG")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL X FOR 399.0;
+		LEVEL 0 FOR 201.0;
 	}
 }
 
@@ -163,9 +167,10 @@ TRANSITION_LIST("MSG")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 10.0;
-		LEVEL 1 FOR 100.0;
-		LEVEL 0 FOR 890.0;
+		LEVEL 1 FOR 110.0;
+		LEVEL 0 FOR 80.0;
+		LEVEL 1 FOR 80.0;
+		LEVEL 0 FOR 330.0;
 	}
 }
 
@@ -175,8 +180,7 @@ TRANSITION_LIST("NRST")
 	{
 		REPEAT = 1;
 		LEVEL 0 FOR 10.0;
-		LEVEL 1 FOR 430.0;
-		LEVEL 0 FOR 560.0;
+		LEVEL 1 FOR 590.0;
 	}
 }
 
